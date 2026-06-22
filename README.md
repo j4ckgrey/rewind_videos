@@ -22,7 +22,7 @@ It also provisions the **yt-dlp binary** on the server (install hook
 ## Installing
 
 In the Rewind dashboard go to **Integrations → Addons**, paste the manifest URL
-(e.g. `https://github.com/j4ckgrey/rewind_videos/blob/main/manifest.json`), and press **Install**. The
+(e.g. `https://raw.githubusercontent.com/j4ckgrey/rewind_videos/main/manifest.json`), and press **Install**. The
 trailer row, Videos library, and YT Music light up on clients on next refresh.
 
 ## Layout
