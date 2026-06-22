@@ -1,0 +1,14 @@
+{
+  "id": "rewind.conduit",
+  "name": "The Conduit",
+  "version": "1.0.0",
+  "description": "yt-dlp online video for Rewind — homepage trailers, the Videos library (YouTube search + playback), and YouTube Music. Provisions the yt-dlp binary on the server at install. Local videos/music libraries do not need this addon.",
+  "resources": ["stream", "catalog"],
+  "rewind": {
+    "kind": "videos",
+    "tabs": [],
+    "configKeys": [],
+    "features": ["trailers", "videos", "ytmusic"],
+    "install": { "provisions": ["yt-dlp-binary"] }
+  }
+}
