@@ -43,31 +43,30 @@ Every module is self-contained — it imports only `ytdlp-nodejs` and Node
 builtins, nothing from rewind_server. That's why The Conduit needs no host seam
 (unlike The Forge): the YouTube-extraction code is pure.
 
-## Consuming it
+## How it's consumed (runtime plugin — NOT part of the server build)
 
-- **In-process (current):** rewind_server source-imports modules granularly via
-  the `@conduit/*` path alias (tsconfig `paths` + Next `experimental.externalDir`)
-  from its thin `src/app/api/videos/*` and `src/app/api/music/*` route shells.
-  Trailer orchestration (`lib/trailers.ts`) stays in rewind_server (it reads the
-  server's own trailers table + catalogs) but delegates the YouTube resolve to
-  `@conduit/ytdlpStream`. Everything is gated on the `addon_videos_installed`
-  flag, so no yt-dlp runs until this addon is installed. The Docker build context
-  must include this dir; for dev, `rewind_videos/node_modules` is symlinked to
-  rewind_server's install.
-- **Standalone (Phase 5):** wrap the modules in a small HTTP service and run as
-  its own container.
+The server ships clean and runs without this addon. `src/plugin.ts` exports
+`register()` returning the namespaces the server's thin `api/videos/*` +
+`api/music/*` route shells call; trailer orchestration (`lib/trailers.ts`) stays
+in the server but delegates the YouTube resolve to the loaded Conduit. Install
+flow: `npm run build` → publish `dist/index.mjs` → paste this repo's
+`manifest.json` URL in **Integrations → Addons** → the server downloads the
+bundle into `data/addons/videos/index.mjs` and loads it. Everything is gated on
+`addon_videos_installed`, so no yt-dlp runs until installed.
 
 ## The yt-dlp binary
 
-`rewind.install.provisions: ["yt-dlp-binary"]` declares that installing this
-addon provisions the yt-dlp binary on the server. (In-process today the binary
-still rides in the rewind_server Dockerfile; the provisioning hook takes it over
-when The Conduit goes standalone.)
+`ytdlp-nodejs` ships a native binary, so the build keeps it **external** to the
+bundle (`--external:ytdlp-nodejs`). The addon's install provisions the binary
+(manifest `rewind.install.provisions: ["yt-dlp-binary"]`); the runtime
+`ytdlp-nodejs` package must be present next to the bundle in
+`data/addons/videos/node_modules/`. (This provisioning step is the one piece that
+still needs finishing — see the server's addonRuntime download flow.)
 
 ## Develop
 
 ```sh
 npm install
 npm run typecheck
+npm run build      # → dist/index.mjs
 ```
-# rewind_videos

@@ -12,12 +12,15 @@
     "./*": "./src/*.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "esbuild src/plugin.ts --bundle --format=esm --platform=node --target=node22 --outfile=dist/index.mjs --tsconfig=tsconfig.json --external:ytdlp-nodejs"
   },
   "dependencies": {
     "ytdlp-nodejs": "^3.4.4"
   },
   "devDependencies": {
+    "esbuild": "^0.28.1",
+    "@types/node": "^25.8.0",
     "typescript": "^6.0.3"
   }
 }
