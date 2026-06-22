@@ -16,7 +16,7 @@
  * reverse-engineering community (ytmusicapi, sigma67/ytmusicapi, etc.).
  */
 
-const INNERTUBE_KEY = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
+const INNERTUBE_KEY = "a";
 const INNERTUBE_URL = `https://music.youtube.com/youtubei/v1/search?key=${INNERTUBE_KEY}&prettyPrint=false`;
 
 const CLIENT_CONTEXT = {
