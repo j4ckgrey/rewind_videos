@@ -22,6 +22,9 @@
  * {tracks, albums, artists} shape the rest of the music UI already speaks.
  */
 
+// PUBLIC YouTube InnerTube (WEB_REMIX) API key — NOT a secret and NOT a Gemini
+// key (see the note in ytmusic-innertube.ts). Same constant every InnerTube
+// client uses; safe to commit. Gemini's key lives in addon_config.gemini_api_key.
 const INNERTUBE_KEY = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
 const INNERTUBE_URL = `https://music.youtube.com/youtubei/v1/browse?key=${INNERTUBE_KEY}&prettyPrint=false`;
 

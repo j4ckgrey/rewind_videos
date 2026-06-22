@@ -16,7 +16,14 @@
  * reverse-engineering community (ytmusicapi, sigma67/ytmusicapi, etc.).
  */
 
-const INNERTUBE_KEY = "a";
+// PUBLIC YouTube InnerTube (WEB_REMIX) API key — NOT a secret and NOT a Gemini
+// key. This exact value is baked into the YouTube Music web client and is the
+// same constant every InnerTube library hardcodes (ytmusicapi, youtube.js, …).
+// It only identifies the "WEB_REMIX" client to youtubei/v1; it grants no account
+// access and is safe to commit. (Gemini keys also start with "AIza", which is
+// the lookalike that caused confusion — the real Gemini key lives server-side in
+// addon_config.gemini_api_key, never here.)
+const INNERTUBE_KEY = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
 const INNERTUBE_URL = `https://music.youtube.com/youtubei/v1/search?key=${INNERTUBE_KEY}&prettyPrint=false`;
 
 const CLIENT_CONTEXT = {
