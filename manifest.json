@@ -6,7 +6,7 @@
   "resources": ["stream", "catalog"],
   "rewind": {
     "kind": "videos",
-    "bundleUrl": "https://github.com/j4ckgrey/rewind_videos/releases/latest/download/index.mjs",
+    "bundleUrl": "https://raw.githubusercontent.com/j4ckgrey/rewind_videos/main/dist/index.mjs",
     "tabs": [],
     "configKeys": [],
     "features": ["trailers", "videos", "ytmusic"],

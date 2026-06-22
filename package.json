@@ -13,7 +13,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "esbuild src/plugin.ts --bundle --format=esm --platform=node --target=node22 --outfile=dist/index.mjs --tsconfig=tsconfig.json --external:ytdlp-nodejs"
+    "build": "node build.mjs"
   },
   "dependencies": {
     "ytdlp-nodejs": "^3.4.4"

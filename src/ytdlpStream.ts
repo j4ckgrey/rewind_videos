@@ -13,8 +13,9 @@
  */
 
 import { YtDlp } from "ytdlp-nodejs";
+import { YTDLP_BINARY_PATH } from "./ytdlpBinary";
 
-const ytdlp = new YtDlp();
+const ytdlp = new YtDlp({ binaryPath: YTDLP_BINARY_PATH });
 
 // YouTube client selection — leave at yt-dlp's built-in default (currently
 // `android_vr`). Both `web` and `tv` clients trigger "Sign in to confirm

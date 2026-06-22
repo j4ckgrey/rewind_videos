@@ -2,9 +2,10 @@
    Maps yt-dlp's loosely-typed, version-drifting entry JSON into our metadata
    shapes. `any` is the correct tool at this untyped CLI boundary. */
 import { YtDlp } from "ytdlp-nodejs";
+import { YTDLP_BINARY_PATH } from "./ytdlpBinary";
 
 /** Shared yt-dlp instance for the Videos endpoints. */
-export const ytdlp = new YtDlp();
+export const ytdlp = new YtDlp({ binaryPath: YTDLP_BINARY_PATH });
 
 /** youtubetab `approximate_date` backfills an approximate upload time into
  *  `timestamp` on flat-playlist entries (search results + channel uploads),

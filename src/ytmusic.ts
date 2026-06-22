@@ -13,13 +13,14 @@
  */
 
 import { YtDlp } from "ytdlp-nodejs";
+import { YTDLP_BINARY_PATH } from "./ytdlpBinary";
 import {
   searchAlbumsInnerTube as searchAlbumsInner,
   searchArtists as searchArtistsInner,
   searchSongs as searchSongsInner,
 } from "./ytmusic-innertube";
 
-export const ytdlp = new YtDlp();
+export const ytdlp = new YtDlp({ binaryPath: YTDLP_BINARY_PATH });
 
 export type MusicTrackHit = {
   id: string; // 11-char video ID
